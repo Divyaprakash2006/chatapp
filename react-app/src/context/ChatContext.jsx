@@ -8,7 +8,8 @@ const ChatContext = createContext();
 
 export const useChat = () => useContext(ChatContext);
 
-export const BACKEND_URL = import.meta.env.VITE_API_URL || 'http://localhost:9090';
+const RAW_BACKEND_URL = import.meta.env.VITE_API_URL || 'http://localhost:9090';
+export const BACKEND_URL = RAW_BACKEND_URL.endsWith('/') ? RAW_BACKEND_URL.slice(0, -1) : RAW_BACKEND_URL;
 
 const compressAudio = async (dataUrl) => {
     // Basic stub for audio compression, returns same dataUrl for now
